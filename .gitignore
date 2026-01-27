@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env
+
+# VSCode
+.vscode/
+
+# Data files
+data/*.csv
