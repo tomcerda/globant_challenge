@@ -2,11 +2,12 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 
 class EmployeeBase(BaseModel):
-    id: int= Field(..., description="Technical ID from source")
-    name: str = Field(..., min_length=1)
-    datetime: datetime
+    id: int
+    name: str
+    datetime: str
     department_id: int
     job_id: int
+
 
 class EmployeeBatchItem(EmployeeBase):
     pass
