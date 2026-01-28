@@ -2,7 +2,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 
 class EmployeeBase(BaseModel):
-    id: int
+    id: int= Field(..., description="Technical ID from source")
     name: str = Field(..., min_length=1)
     datetime: datetime
     department_id: int
