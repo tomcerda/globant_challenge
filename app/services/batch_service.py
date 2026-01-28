@@ -2,13 +2,14 @@ import pandas as pd
 from sqlalchemy.orm import Session
 from app.crud.employees import insert_employees
 from app.services.validations import validate_employee_record, log_rejected_records
+from app.config import MAX_BATCH_SIZE
 
 
 def process_batch_employees(db: Session, items: list[dict]):
     # Validate batch size
-    if not 1 <= len(items) <= 1000:
+    if not 1 <= len(items) <= MAX_BATCH_SIZE:
         from fastapi import HTTPException
-        raise HTTPException(status_code=400, detail="Batch size must be between 1 and 1000")
+        raise HTTPException(status_code=400, detail=f"Batch size must be between 1 and {MAX_BATCH_SIZE}")
 
     valid_records = []
     rejected_records = []
